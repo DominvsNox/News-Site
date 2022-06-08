@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    
+    <title>Admin Page</title>
+</head>
+<body>
+    <h1 class="mb-4 p-2 text-muted">Статті блогу</h1>
+    <div class="container m-1 p-1">
+        <a href="/admin/new" class="btn btn-success">Створити новий блог</a>
+        <% articles.forEach(article=>{ %>
+            <div class="card mt-4 p-2">
+               <h5 class="card-title"> <%= article.title %> </h5>
+               <div class="text-muted card-subtitle mb-2"><%= article.createdAt %></div>
+               <div class="card-text mb-2"><%= article.description %></div>
+            </div>
+            <form action="/admin/<%= articles.indexOf(article)%>?_method=DELETE" method="POST">
+                <button type="submit" class="btn btn-danger mt-2">Видалити</button>
+            </form>
+        <% }) %>
+       
+    </div>
+</body>
+</html>

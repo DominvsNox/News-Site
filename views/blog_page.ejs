@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link href="style.css">
+    <title>Blog Page</title>
+</head>
+<body>
+    <body class="m-0 p-o">
+        <div class = "container-fluid m-0 p-0">
+            <div>
+                <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                    <div class="container-fluid">
+                        <a class="navbar-brand" href="/">
+                            <img src="/Resourses/Prapor_of_Ukraine.png" alt="" width="30" height="24">
+                          </a>
+                      <a class="navbar-brand text-warning" href="/">Новини UA</a>
+                      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                      </button>
+                      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                          <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="general" id="general">Головні новини</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="business" id="business">Бізнес</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="sports" id="sports">Спорт</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="tech" id="tech">Технології</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="fun" id="fun">Розваги</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="science" id="science">Наука</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="health" id="health">Здоров'я</a>
+                          </li>
+                          
+                        </ul>
+                        <form class="d-flex" role="search">
+                          <input class="form-control me-2" type="text" id="newsQuerry"  placeholder="Пошук новин..." value="">
+                          <a class=" btn btn-outline-warning" id="srch" href="">Шукати</a>
+                        </form>
+                        <script>
+                          const btn = document.getElementById('srch');
+                          btn.addEventListener("click",()=>{
+                          const input = document.getElementById('newsQuerry');
+                          let value = input.value;
+                          let link= `search?q=${value}`;
+                          btn.href=link;
+                          })
+                          
+                        </script>
+                      </div>
+                    </div>
+                  </nav>
+            </div>
+            <div class="row m-2">
+              <% articles.forEach((article) => { %>
+
+                <div id="col" class="col-sm-12 col-md-4 col-lg-3">
+                    <div id="card" class="card p-2">
+                        
+                        <h5 class="card-title"><%= article.title %></h5>
+                        <p class="card-body text-muted"><%= article.description %></p>
+                        <a class="btn btn-primary" href="read/<%= articles.indexOf(article)%>">Читати</a>
+                    </div>
+                </div>
+                
+            <% }) %>
+            </div>
+            <div>
+                <nav class="navbar navbar-expand-lg  bg-dark navbar-dark mt-5">
+                    <div class="container-fluid mt-10">
+                      
+                        <h4 class="text-warning me-auto ms-auto">Слава<span class="text-primary"> Україні</span></h4>
+                      
+                    </div>
+                  </nav>
+            </div>
+</body>
+</html>
